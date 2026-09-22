@@ -1,0 +1,1007 @@
+/* ==========================================================================
+    RESET BÁSICO E CURSOR CUSTOMIZADO
+   ========================================================================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background-image: url('images/background-pgs.png');
+  background-attachment: fixed;
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  font-family: sans-serif;
+  color: #1e0b0b;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* ==========================================================================
+    SPLASH PAGE / TELA DE BOAS-VINDAS
+   ========================================================================== */
+.splash-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #1e0b0b !important;
+  z-index: 1000;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+.splash-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-color: #1e0b0b !important;
+  overflow: hidden;
+}
+
+.splash-bg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  background-color: #1e0b0b !important;
+  display: block;
+}
+
+.hover-text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.splash-link {
+  position: absolute;
+  display: block;
+  cursor: pointer;
+  z-index: 20;
+  text-decoration: none;
+}
+
+.splash-text-link {
+  position: absolute;
+  display: inline-block !important;
+  width: auto !important;
+  height: auto !important;
+  font-family: 'Anton', sans-serif;
+  font-size: 2.4rem; 
+  color: #FCF6DF;
+  text-decoration: none;
+  letter-spacing: 0.2px;
+  z-index: 20;
+  white-space: nowrap;
+  
+  text-shadow: 
+    -1px -2px 0 #1E0B0B, 1px -2px 0 #1E0B0B, 
+    -2px -1px 0 #1E0B0B, 2px -1px 0 #1E0B0B, 
+    -2px  1px 0 #1E0B0B, 2px  1px 0 #1E0B0B, 
+    -1px  2px 0 #1E0B0B, 1px  2px 0 #1E0B0B,
+    -3px -2px 0 #1E0B0B, 3px -2px 0 #1E0B0B, 
+    -2px -3px 0 #1E0B0B, 2px -3px 0 #1E0B0B, 
+    -3px  2px 0 #1E0B0B, 3px  2px 0 #1E0B0B, 
+    -2px  3px 0 #1E0B0B, 2px  3px 0 #1E0B0B,
+    -4px -1px 0 #1E0B0B, 4px -1px 0 #1E0B0B, 
+    -1px -4px 0 #1E0B0B, 1px -4px 0 #1E0B0B, 
+    -4px  1px 0 #1E0B0B, 4px  1px 0 #1E0B0B, 
+    -1px  4px 0 #1E0B0B, 1px  4px 0 #1E0B0B,
+    -3px -3px 0 #1E0B0B, 3px -3px 0 #1E0B0B, 
+    -3px  3px 0 #1E0B0B, 3px  3px 0 #1E0B0B;
+  
+  transition: color 0.25s ease, transform 0.25s ease;
+  padding: 0;
+  margin: 0;
+}
+
+.splash-text-link:hover {
+  color: #41A423;
+  transform: translateY(-2px);
+}
+
+.splash-text-link.link-photocard {
+  top: 20px;   
+  left: 31%; 
+}
+
+.splash-text-link.link-merch {
+  top: 20px;   
+  left: 50.5%; 
+}
+
+.link-tape {
+  top: 1.5%;
+  left: 91.2%;
+  width: 7.5%;
+  height: 8%;
+}
+
+.splash-container:has(.link-photocard:hover) .hover-photocard,
+.splash-container:has(.link-merch:hover) .hover-merch {
+  opacity: 1 !important;
+}
+
+.link-photocard:hover ~ .hover-photocard,
+.link-merch:hover ~ .hover-merch,
+.link-photocard:hover ~ .hover-text.hover-photocard,
+.link-merch:hover ~ .hover-text.hover-merch {
+  opacity: 1 !important;
+}
+
+.splash-link:hover .hover-text {
+  opacity: 1 !important;
+}
+
+.tooltip-box {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  top: 120%;
+  right: 0;
+  margin-top: -2px;
+  background-color: #1c1626;
+  color: #9FC22B;
+  border: 1px solid #9FC22B;
+  padding: 5px 10px;
+  border-radius: 12px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  white-space: nowrap;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  transition: opacity 0.25s ease, visibility 0.25s ease, transform 0.25s ease;
+  transform: translateY(-4px);
+  pointer-events: none;
+  z-index: 30;
+}
+
+.link-tape:hover .tooltip-box {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.splash-disclaimer {
+  position: absolute !important;
+  bottom: 70px;
+  left: 12.4%;
+  width: 14.8%;
+  font-family: sans-serif;
+  font-size: 0.47rem;
+  font-weight: 600;
+  line-height: 1.25;
+  color: #9c9587;
+  text-align: left;
+  letter-spacing: 0.3px;
+  pointer-events: none;
+  margin: 0;
+  padding: 0;
+  z-index: 50;
+}
+
+/* ==========================================================================
+    CONTEÚDO PRINCIPAL
+   ========================================================================== */
+.content {
+  padding-top: 55px;
+  max-width: 1180px;
+  width: 95%;
+  margin: 0 auto;
+  padding-bottom: 20px;
+}
+
+.section {
+  display: none;
+  padding: 0;
+}
+
+.section.active-section {
+  display: block;
+  animation: fadeInSuave 0.4s ease-out forwards;
+}
+
+@keyframes fadeInSuave {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+::selection {
+  background-color: #1e0b0b;
+  color: #cfd73b;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #cfd73b;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #41a423;
+}
+
+.top-nav-buttons {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+  padding: 0;
+}
+
+.btn-top {
+  font-family: 'Anton', sans-serif;
+  font-size: 1.25rem;
+  background-color: #cfd73b;
+  color: #1e0b0b;
+  border: none;
+  border-radius: 12px;
+  padding: 8px 22px;
+  cursor: pointer;
+  letter-spacing: 1px;
+  line-height: 1;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.btn-top:hover {
+  background-color: #41a423;
+  color: #fcf6df;
+}
+
+.binder-menu a, .menu-item, .nav-btn, .top-nav-buttons a, .top-nav-buttons button {
+  display: inline-block !important;
+  width: auto !important;
+  max-width: max-content !important;
+}
+
+.binder-container {
+  background-color: #fcf6df;
+  border: 3px solid #1e0b0b;
+  border-radius: 16px;
+  max-width: 1180px;
+  width: 100%;
+  margin: 0 auto 20px auto;
+  overflow: visible;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+.binder-header-bar {
+  background-color: #1e0b0b;
+  color: #fcf6df;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 18px;
+  font-family: sans-serif;
+  font-size: 0.72rem;
+  font-weight: normal;
+  margin-bottom: 45px;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  margin-top: -1px;
+}
+
+.header-one-in-a-million {
+  color: #fcf6df;
+  font-family: sans-serif;
+  font-size: 0.72rem;
+  font-weight: normal;
+}
+
+.hashtags-filter {
+  display: flex;
+  gap: 12px;
+}
+
+.tag-btn {
+  background: none;
+  border: none;
+  color: #fcf6df;
+  font-family: sans-serif;
+  font-size: 0.72rem;
+  font-weight: normal;
+  cursor: pointer;
+  padding: 0;
+  opacity: 0.85;
+  transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+.tag-btn:hover {
+  color: #41a423;
+  opacity: 1;
+}
+
+.tag-btn.active {
+  color: #41a423 !important;
+  font-weight: bold;
+  opacity: 1;
+}
+
+.template-credit {
+  font-size: 0.72rem;
+  font-weight: normal;
+}
+
+.template-credit a {
+  color: #fcf6df;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.template-credit a:hover {
+  color: #cfd73b;
+}
+
+.binder-title-area {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 10px 30px;
+  background-color: transparent;
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+}
+
+.header-mascot {
+  position: absolute;
+  top: -150px;
+  left: 50%;
+  transform: translateX(-52%);
+  height: 160px;
+  z-index: 20;
+  pointer-events: none;
+}
+
+.header-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1;
+}
+
+.header-left, 
+.header-right {
+  width: 120px;
+  flex-shrink: 0;
+}
+
+.header-left {
+  align-items: flex-start;
+  transform: translateY(-40px);
+}
+
+.header-right {
+  align-items: flex-end;
+  transform: translateY(-30px);
+}
+
+#jeongyeon .header-left {
+  transform: translateY(-60px); 
+}
+
+#jeongyeon .header-right {
+  transform: translateY(-60px); 
+}
+
+.header-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+  position: relative;
+  transform: translateY(-95px); 
+}
+
+.title-split-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 155px;
+  width: 100%;
+  margin: 0 auto;
+  transform: translateY(0px);
+}
+
+.title-word {
+  font-family: 'Rock 3D', cursive, sans-serif;
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: #1e0b0b;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  line-height: 1;
+  display: inline-block;
+  min-width: 220px;
+  -webkit-font-smoothing: antialiased;
+}
+
+.title-split-wrapper .title-word:first-child {
+  text-align: right;
+}
+
+.title-split-wrapper .title-word:last-child {
+  text-align: left;
+}
+
+.binder-subtitle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: 'Gochi Hand', cursive, sans-serif;
+  font-size: 1.3rem;
+  color: #1e0b0b;
+  transform: translateY(16px);
+  margin-top: 6px;
+}
+
+.star-icon {
+  font-size: 1.2rem;
+  line-height: 1;
+  color: #1e0b0b;
+}
+
+.handwritten-title {
+  font-family: 'Gochi Hand', cursive, sans-serif;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #1e0b0b;
+  margin-bottom: -4px;
+}
+
+.header-sticker {
+  height: 80px;
+  object-fit: contain;
+}
+
+.sticker-dogs {
+  margin-top: -15px;
+}
+
+#twice .binder-title-area {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  padding: 10px 0;
+}
+
+#twice .header-col {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 80px;
+}
+
+#twice .header-col img.header-sticker {
+  width: 250px;
+  height: auto;
+  display: block;
+}
+
+#twice .header-center {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-top: 51px;
+  transform: translateY(-53px);
+}
+
+#twice .header-center .title-split-wrapper,
+#twice .header-center .binder-subtitle {
+  transform: translateY(-40px);
+}
+
+#twice .header-center .binder-subtitle {
+  transform: translateY(-25px);
+}
+
+#twice .header-left {
+  padding-left: 150px;
+  transform: translateY(-55px); 
+}
+
+#twice .header-right {
+  padding-right: 150px;
+  transform: translateY(-50px); 
+}
+
+/* =========================================================
+    GRID DE PHOTOCARDS (PRETO E BRANCO PURO - SEM BLUR)
+   ========================================================= */
+.photocard-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 16px;
+  padding: 0 25px 25px 25px;
+  margin-top: -75px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.card {
+  background-color: #fcf6df;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  position: relative; 
+}
+
+.card-img-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 55 / 85;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #e0dcd5;
+  border: 1px solid #c2bdae;
+  transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.3s ease;
+}
+
+.card:hover .card-img-wrapper {
+  border-color: #CFD73B !important;
+  transform: translateY(-3px) scale(1.04);
+}
+
+.card-img-wrapper img,
+.zoomable-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  cursor: zoom-in;
+}
+
+.card.not-have img,
+.card.otw img,
+.card.prio img,
+.card.missing img {
+  filter: grayscale(100%);
+  opacity: 0.65;
+}
+
+.card:hover img,
+.card.not-have:hover img,
+.card.otw:hover img,
+.card.prio:hover img,
+.card.missing:hover img {
+  filter: grayscale(0%) !important;
+  opacity: 1 !important;
+}
+
+/* ==========================================
+    GRID DE TWICE GOODS (TRANSIÇÃO E ZOOM)
+   ========================================== */
+.merch-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 11px;
+  margin: -75px 24px 10px 24px; 
+}
+
+.merch-card {
+  background: #FCF6DF;
+  border: 1px solid #1E0B0B;
+  border-radius: 6px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative; 
+}
+
+.merch-img-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: #BEBAAE;
+  border-bottom: 1px solid #1E0B0B;
+}
+
+.merch-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 3px 3px 0px #92908B;
+  z-index: 2;
+}
+
+.merch-img-wrapper img.zoomable-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.merch-img-wrapper img.zoomable-img.active {
+  opacity: 1;
+}
+
+.merch-info {
+  padding: 5px 6px;
+  background: #FCF6DF;
+  text-align: center;
+}
+
+.merch-title {
+  font-family: 'Gochi Hand', cursive;
+  font-size: 0.8rem;
+  color: #1E0B0B;
+  font-weight: normal;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.merch-desc, .card-date, .merch-info .era {
+  display: none;
+}
+
+.merch-img-wrapper .carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #92908B;
+  color: #FCF6DF;
+  border: none;
+  padding: 4px 6px;
+  cursor: pointer;
+  font-family: 'Anton', sans-serif;
+  font-size: 10px;
+  border-radius: 2px;
+  z-index: 10;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.merch-img-wrapper .carousel-btn:hover {
+  background: #1E0B0B;
+  transform: translateY(-50%) scale(1.05);
+}
+
+.merch-img-wrapper .carousel-btn.prev {
+  left: 5px;
+}
+
+.merch-img-wrapper .carousel-btn.next {
+  right: 5px;
+}
+
+/* =========================================================
+    BADGES FLUTUANTES
+   ========================================================= */
+@keyframes bounceSlow {
+  0%, 100% {
+    transform: translateY(0);
+    animation-timing-function: cubic-bezier(0.33, 1, 0.68, 1);
+  }
+  50% {
+    transform: translateY(-7px);
+    animation-timing-function: cubic-bezier(0.32, 0, 0.67, 0);
+  }
+}
+
+.card .badge-otw,
+.merch-card .badge-otw {
+  position: absolute;
+  width: 44px;
+  height: 44px;
+  bottom: 4px;
+  right: 4px;
+  background-image: url('images/otw-badge.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: 99;
+  pointer-events: none;
+  opacity: 1 !important;
+  filter: none !important;
+  animation: bounceSlow 2.4s infinite;
+}
+
+.card .badge-prio,
+.merch-card .badge-prio {
+  position: absolute;
+  width: 52px;
+  height: 52px;
+  bottom: -2px;    
+  right: 9px;    
+  background-image: url('images/prio-badge.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: 99;
+  pointer-events: none;
+  opacity: 1 !important;
+  filter: none !important;
+  animation: bounceSlow 2.4s infinite 0.3s;
+}
+
+/* =========================================================
+    RODAPÉ DENTRO DO BINDER
+   ========================================================= */
+.binder-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  padding: 20px 28px;
+  border-top: 1px dashed #e0dcd5;
+  margin-top: 20px;
+}
+
+.footer-copyright {
+  font-size: 0.65rem;
+  color: #1e0b0b;
+  text-align: center;
+  letter-spacing: 0.5px;
+  font-weight: 400 !important;
+}
+
+.footer-copyright strong {
+  font-weight: 700;
+}
+
+.footer-icon-link {
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  position: relative;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.6;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.footer-icon-link:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.icon-home {
+  background-image: url('images/hi.png');
+}
+
+.icon-top {
+  background-image: url('images/arrow.png');
+}
+
+.footer-icon-link .footer-tooltip {
+  position: absolute;
+  bottom: 105%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #1a1a1a;
+  color: #CFD73B;
+  border: 1px solid #CFD73B;
+  padding: 6px 14px;
+  border-radius: 50px;
+  font-size: 11px;
+  font-family: sans-serif;
+  white-space: nowrap;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.footer-icon-link:hover .footer-tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(-2px);
+}
+
+.footer-box, 
+.footer-info-box {
+  background-color: #1e0b0b;
+  color: #CFD73B;
+  border: 1px solid #CFD73B;
+  border-radius: 20px;
+  padding: 8px 18px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  display: inline-block;
+  letter-spacing: 0.3px;
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+
+.footer-box p,
+.footer-info-box p {
+  margin: 0;
+  color: #CFD73B;
+  font-family: inherit;
+}
+
+/* =========================================================
+    MODAL DE AMPLIAR IMAGEM (UNIFICADO)
+   ========================================================= */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  padding-top: 60px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(20, 18, 23, 0.88);
+}
+
+.modal-content {
+  margin: auto;
+  display: block;
+  max-width: 85vw;
+  max-height: 80vh;
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 0 30px rgba(159, 194, 43, 0.3);
+  animation: zoomIn 0.3s ease;
+  transition: opacity 0.25s ease-in-out;
+}
+
+@keyframes zoomIn {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+#modal-caption {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+  text-align: center;
+  color: #f2f0ed;
+  padding: 15px 0;
+  font-family: 'Gochi Hand', cursive !important;
+  font-weight: normal !important;
+  font-size: 1.0rem;
+  letter-spacing: 0.5px;
+}
+
+.modal-close {
+  position: absolute;
+  top: 20px;
+  right: 35px;
+  color: #fff;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.modal-close:hover {
+  color: #9FC22B;
+}
+
+.modal-desc {
+  display: block;
+  font-family: sans-serif;
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: #d1cbd5;
+  margin-top: 6px;
+  line-height: 1.4;
+}
+
+.modal-date {
+  display: block;
+  font-family: sans-serif;
+  font-size: 0.65rem;
+  font-weight: 500;
+  color: #9c9587;
+  margin-top: -15px;
+  letter-spacing: 0.3px;
+}
+
+/* =========================================================
+    RESPONSIVIDADE & DIVERSOS
+   ========================================================= */
+img {
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+@keyframes cardScaleIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.92) translateZ(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateZ(0);
+  }
+}
+
+.card.animate-card {
+  animation: cardScaleIn 1s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+}
+
+@media (max-width: 1024px) {
+  .photocard-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 850px) {
+  .merch-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .photocard-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .merch-grid {
+    grid-template-columns: repeat(2, 1fr);
+    margin: 15px 12px;
+  }
+}
+
+@media (max-width: 500px) {
+  .photocard-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .merch-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+#jeongyeon .header-right img.header-sticker {
+  transform: translateY(6px); 
+}
+
+#jeongyeon .header-right span,
+#jeongyeon .header-right .handwritten-title {
+  transform: translateY(10px); 
+}

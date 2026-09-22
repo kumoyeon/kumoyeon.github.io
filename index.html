@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kumoyeon's 𖤐 Collection!</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="images/fav-1.png">
+
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Importação das fontes do Google Fonts (Anton, Rock 3D e Gochi Hand) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Gochi+Hand&family=Rock+3D&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- SPLASH PAGE / TELA DE BOAS-VINDAS -->
+  <section id="splash-screen" class="splash-screen">
+    <div class="splash-container">
+      <!-- Fundo base da splash -->
+      <img src="images/splash-bg-v4.png" class="splash-bg" alt="Splash Background">
+
+      <!-- Textos interativos da Splash (corrigidos para área de clique total nos dois lados) -->
+      <a href="#" class="splash-text-link link-photocard" onclick="enterSite('jeongyeon', event)">PHOTOCARDS</a>
+      <a href="#" class="splash-text-link link-merch" onclick="enterSite('twice', event)">TWICE GOODS</a>
+
+      <!-- Link da fita / logo Kumoyeon -->
+      <a href="https://x.com/kumoyeon" target="_blank" rel="noopener noreferrer" class="splash-link link-tape" aria-label="Twitter Kumoyeon">
+        <span class="tooltip-box">powered by kumoyeon, with ♡ and affection.</span>
+      </a>
+
+      <!-- Disclaimer -->
+      <p class="splash-disclaimer">
+        DESIGNED FOR ONCES WORLDWIDE<br>
+        UNOFFICIAL JEONGYEON / TWICE ARCHIVE<br>
+        © ALL RIGHTS RESERVED TO OWNERS
+      </p>
+    </div>
+  </section>
+
+  <!-- CONTEÚDO PRINCIPAL DO SITE -->
+  <div id="main-site" class="main-site hidden">
+
+    <main class="content">
+
+      <!-- SEÇÃO JEONGYEON / PHOTOCARDS -->
+      <section id="jeongyeon" class="section active-section">
+        
+        <!-- BOTÕES SUPERIORES DE NAVEGAÇÃO -->
+        <div class="top-nav-buttons">
+          <button type="button" class="btn-top" onclick="showSplash(event)">HOME</button>
+          <button type="button" class="btn-top" onclick="switchSection('twice', event)">TWICE GOODS</button>
+        </div>
+
+        <!-- BINDER CONTAINER (BLOCO OFF-WHITE) -->
+        <div class="binder-container">
+          
+          <!-- BARRA PRETA DE CABEÇALHO DENTRO DO BLOCO -->
+          <div class="binder-header-bar">
+            <!-- FILTROS COM HASHTAGS (ESQUERDA) -->
+            <div class="hashtags-filter">
+              <button type="button" class="tag-btn active" onclick="filterCards('all', event)">#ALL</button>
+              <button type="button" class="tag-btn" onclick="filterCards('tenho', event)">#MY BINDER</button>
+              <button type="button" class="tag-btn" onclick="filterCards('otw', event)">#ON THE WAY</button>
+              <button type="button" class="tag-btn" onclick="filterCards('prio', event)">#PRIOS</button>
+            </div>
+
+            <!-- TEMPLATE CREDIT (DIREITA) -->
+            <div class="template-credit">
+              template by <a href="https://x.com/kumoyeon" target="_blank" rel="noopener noreferrer">@kumoyeon</a>
+            </div>
+          </div>
+
+          <!-- CABEÇALHO ILUSTRADO -->
+          <div class="binder-title-area">
+            <!-- MASCOTE VERDE NO TOPO CENTRAL -->
+            <img src="images/jeongyeon-badge.png" alt="Mascot Jeongyeon" class="header-mascot">
+
+            <!-- ESQUERDA: prio! + adesivo independente -->
+            <div class="header-col header-left">
+              <span class="handwritten-title">prio!</span>
+              <img src="images/prio-header.png" alt="Sticker Dogs" class="header-sticker sticker-dogs">
+            </div>
+
+            <!-- CENTRO: TÍTULO EM DUAS PARTES + SUBTÍTULO -->
+            <div class="header-col header-center">
+              <div class="title-split-wrapper">
+                <span class="title-word">JEONGYEON</span>
+                <span class="title-word">PHOTOCARD</span>
+              </div>
+              <div class="binder-subtitle">
+                <span>Wishlist</span>
+                <span class="star-icon">&amp;</span>
+                <span>Archive</span>
+              </div>
+            </div>
+
+            <!-- DIREITA: otw! + adesivo independente -->
+            <div class="header-col header-right">
+              <span class="handwritten-title">otw!</span>
+              <img src="images/otw-header.png" alt="Sticker OTW" class="header-sticker sticker-otw otw-sticker">
+            </div>
+          </div>
+
+          <!-- GRADE DE PHOTOCARDS (Alimentada via Google Sheets) -->
+          <div class="photocard-grid"></div>
+
+          <!-- RODAPÉ ORIGINAL COM OS TOOLTIPS ESTILIZADOS NOS CANTOS -->
+          <div class="binder-footer">
+            <div class="footer-icon-link icon-home" onclick="showSplash(event)">
+              <span class="footer-tooltip">home</span>
+            </div>
+
+            <div class="footer-copyright">
+              ©2026 THANKS FOR VISITING MY PAGE! THIS IS FOR JEONGYEON &amp; TWICE.
+            </div>
+
+            <div class="footer-icon-link icon-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+              <span class="footer-tooltip">scroll to top</span>
+            </div>
+          </div>
+
+        </div> 
+      </section>
+
+      <!-- SEÇÃO TWICE & MERCHS -->
+      <section id="twice" class="section">
+        <div class="top-nav-buttons">
+          <button type="button" class="btn-top" onclick="showSplash(event)">HOME</button>
+          <button type="button" class="btn-top" onclick="switchSection('jeongyeon', event)">PHOTOCARDS</button>
+        </div>
+
+        <div class="binder-container">
+          <div class="binder-header-bar">
+            <div class="hashtags-filter">
+              <span class="header-one-in-a-million">ONE IN A MILLION</span>
+            </div>
+            <div class="template-credit">
+              template by <a href="https://x.com/kumoyeon" target="_blank" rel="noopener noreferrer">@kumoyeon</a>
+            </div>
+          </div>
+
+          <div class="binder-title-area">
+            <div class="header-col header-left">
+              <span class="handwritten-title"></span>
+              <img src="images/lovelys-1.png" alt="Sticker" class="header-sticker">
+            </div>
+
+            <div class="header-col header-center">
+              <img src="images/twice-header-logo.png" alt="Mascote Twice" class="header-mascot">
+              <div class="title-split-wrapper">
+                <span class="title-word">TWICE</span>
+                <span class="title-word">GOODS</span>
+              </div>
+              <p class="binder-subtitle">
+                <span class="star-icon"></span> Merch &amp; Albums <span class="star-icon"></span>
+              </p>
+            </div>
+
+            <div class="header-col header-right">
+              <img src="images/lovelys-2.png" alt="Sticker" class="header-sticker sticker-dogs">
+            </div>
+          </div>
+
+          <!-- GRADE DE MERCH (Alimentada via Google Sheets) -->
+          <div class="merch-grid"></div>
+
+          <!-- RODAPÉ ORIGINAL COM OS TOOLTIPS ESTILIZADOS NOS CANTOS -->
+          <div class="binder-footer">
+            <div class="footer-icon-link icon-home" onclick="showSplash(event)">
+              <span class="footer-tooltip">home</span>
+            </div>
+            <div class="footer-copyright">
+              ©2026 THANKS FOR VISITING MY PAGE! THIS IS FOR JEONGYEON &amp; TWICE.
+            </div>
+            <div class="footer-icon-link icon-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+              <span class="footer-tooltip">scroll to top</span>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- MODAL DE ZOOM -->
+  <div id="image-modal" class="modal" onclick="closeModal()">
+    <span class="modal-close">&times;</span>
+    <img class="modal-content" id="modal-img" alt="Zoomed view">
+    <div id="modal-caption"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
