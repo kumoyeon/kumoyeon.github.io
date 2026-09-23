@@ -653,8 +653,13 @@ html, body {
   display: block;
   opacity: 0;
   transition: opacity 0.3s ease-in-out;
-  image-rendering: -webkit-optimize-contrast; /* Suaviza o redimensionamento de imagens grandes */
+  
+  /* Truques para suavizar imagens grandes reduzidas */
+  image-rendering: -webkit-optimize-contrast;
   image-rendering: crisp-edges;
+  filter: contrast(102%) saturate(101%); /* Só para estabilizar o render */
+  backface-visibility: hidden;
+  transform: translateZ(0); /* Força a aceleração de hardware da placa de vídeo para suavizar os pixels */
 }
 
 .merch-img-wrapper img.zoomable-img.active {
