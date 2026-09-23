@@ -654,16 +654,16 @@ html, body {
   opacity: 0;
   transition: opacity 0.3s ease-in-out;
   
-  /* Truques para suavizar imagens grandes reduzidas */
-  image-rendering: -webkit-optimize-contrast;
-  image-rendering: crisp-edges;
-  filter: contrast(102%) saturate(101%); /* Só para estabilizar o render */
+  /* Suavização de imagens grandes do Imgur */
+  image-rendering: auto;
+  filter: blur(0.2px);
   backface-visibility: hidden;
-  transform: translateZ(0); /* Força a aceleração de hardware da placa de vídeo para suavizar os pixels */
+  transform: translateZ(0);
 }
 
 .merch-img-wrapper img.zoomable-img.active {
   opacity: 1;
+}
 }
 
 .merch-info {
