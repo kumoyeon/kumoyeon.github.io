@@ -664,7 +664,7 @@ html, body {
 .merch-img-wrapper img.zoomable-img.active {
   opacity: 1;
 }
-}
+
 
 .merch-info {
   padding: 5px 6px;
@@ -681,6 +681,8 @@ html, body {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  text-align: center; /* Garante que o texto fique centralizado */
+  width: 100%;       /* Ocupa toda a largura da caixinha */
 }
 
 .merch-desc, .card-date, .merch-info .era {
