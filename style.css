@@ -877,7 +877,7 @@ html, body {
   display: none;
   position: fixed;
   z-index: 2000;
-  padding-top: 60px;
+  padding-top: 70px; /* Desce um pouco mais a imagem */
   left: 0;
   top: 0;
   width: 100%;
@@ -890,7 +890,7 @@ html, body {
   margin: auto;
   display: block;
   max-width: 85vw;
-  max-height: 80vh;
+  max-height: 72vh; /* Mantém o respiro seguro embaixo */
   object-fit: contain;
   border-radius: 12px;
   box-shadow: 0 0 30px rgba(159, 194, 43, 0.3);
